@@ -1,4 +1,4 @@
-package cn.kimmking.kkcache;
+package cn.kimmking.kkcache.core;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

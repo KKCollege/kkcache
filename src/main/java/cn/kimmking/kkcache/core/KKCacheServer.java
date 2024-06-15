@@ -1,5 +1,6 @@
-package cn.kimmking.kkcache;
+package cn.kimmking.kkcache.core;
 
+import cn.kimmking.kkcache.KKPlugin;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.Channel;
