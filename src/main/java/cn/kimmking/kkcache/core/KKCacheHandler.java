@@ -32,9 +32,14 @@ public class KKCacheHandler extends SimpleChannelInboundHandler<String> {
 
         Command command = Commands.get(cmd);
         if(command != null) {
-            Reply<?> reply = command.exec(cache, args);
-            System.out.println("CMD[" + cmd + "] => " + reply.type + " => " + reply.value);
-            replyContext(ctx, reply);
+            try {
+                Reply<?> reply = command.exec(cache, args);
+                System.out.println("CMD[" + cmd + "] => " + reply.type + " => " + reply.value);
+                replyContext(ctx, reply);
+            } catch (Exception exception) {
+                Reply<?> reply = Reply.error("EXP exception with msg: '" + exception.getMessage() + "'");
+                replyContext(ctx, reply);
+            }
         } else {
             Reply<?> reply = Reply.error("ERR unsupported command '" + cmd + "'");
             replyContext(ctx, reply);
